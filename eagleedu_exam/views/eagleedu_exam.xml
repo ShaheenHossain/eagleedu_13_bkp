@@ -48,3 +48,4 @@
     <menuitem id="exam_type_menu" parent="eagleedu_exam.exam_configuration_menu" action="action_eagleedu_exam" name="Exam Types" sequence="15"/>
 
 </eagle>
+
