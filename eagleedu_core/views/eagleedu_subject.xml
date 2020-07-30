@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<eagle>
+
+    <record id="view_eagleedu_subject_tree" model="ir.ui.view">
+        <field name="name">eagleedu.subject.tree</field>
+        <field name="model">eagleedu.subject</field>
+        <field name="arch" type="xml">
+            <tree string="Subject Name">
+                <field name="name"/>
+                <field name="subject_code"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_eagleedu_subject_form" model="ir.ui.view">
+        <field name="name">eagleedu.subject.form</field>
+        <field name="model">eagleedu.subject</field>
+        <field name="arch" type="xml">
+            <form string="Subject Name">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="subject_code"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_eagleedu_subject" model="ir.actions.act_window">
+        <field name="name">Subject Name</field>
+        <field name="res_model">eagleedu.subject</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p subject="oe_view_nocontent_create">
+                Create the your first academic Subject of Class here.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="eagleedu_main_menu_conf" name="Configuration" parent="eagleedu_menu_root"/>
+
+    <menuitem action="action_eagleedu_subject" parent="eagleedu_submenu_class_conf"
+              id="menu_action_eagleedu_subject" name = "Subject" sequence="30"/>
+
+
+</eagle>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<eagle>
+
+    <record id="view_eagleedu_standard_class_tree" model="ir.ui.view">
+        <field name="name">eagleedu.standard_class.tree</field>
+        <field name="model">eagleedu.standard_class</field>
+        <field name="arch" type="xml">
+            <tree string="Standard Class or Level">
+                <field name="name"/>
+                <field name="class_category_id"/>
+                <field name="class_sections_ids" widget="many2many_tags"/>
+                <field name="group_division_ids" widget="many2many_tags"/>
+                <field name="subjects_ids" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_eagleedu_standard_class_form" model="ir.ui.view">
+        <field name="name">eagleedu.standard_class.form</field>
+        <field name="model">eagleedu.standard_class</field>
+        <field name="arch" type="xml">
+            <form string="Standard Class or level">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="roman_name"/>
+                        </group>
+                        <group>
+                            <field name="class_sections_ids"/>
+                        </group>
+                        <group>
+                            <field name="group_division_ids"/>
+                        </group>
+                        <group>
+                            <field name="subjects_ids"/>
+                        </group>
+                        <group>
+                            <field name="class_category_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_eagleedu_standard_class" model="ir.actions.act_window">
+        <field name="name">Standard Class</field>
+        <field name="res_model">eagleedu.standard_class</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Create the your first academic Standard Class here.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="eagleedu_main_menu_conf" name="Configuration" parent="eagleedu_menu_root"/>
+
+    <menuitem id="eagleedu_submenu_standard_class_conf" name="Class" parent="eagleedu_main_menu_conf" sequence="1"/>
+
+    <menuitem action="action_eagleedu_standard_class" parent="eagleedu_submenu_class_conf"
+              id="menu_action_eagleedu_standard_class" name = "Standard Class" sequence="30"/>
+
+
+</eagle>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<eagle>
+    <record id="view_eagleedu_exam_tree" model="ir.ui.view">
+        <field name="name">eagleedu.exam.tree</field>
+        <field name="model">eagleedu.exam</field>
+        <field name="arch" type="xml">
+            <tree string="Exam Typr">
+                <field name="exam_type"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_eagleedu_exam_form" model="ir.ui.view">
+        <field name="name">eagleedu.exam.form</field>
+        <field name="model">eagleedu.exam</field>
+        <field name="arch" type="xml">
+            <form string="Exam Type">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="exam_type"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="action_eagleedu_exam" model="ir.actions.act_window">
+        <field name="name">Exam Type</field>
+        <field name="res_model">eagleedu.exam</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Create the Exam Type first here.
+            </p>
+        </field>
+    </record>
+
+
+    <menuitem id="exam_root_menu" name="Exam" sequence="11" web_icon="eagleedu_exam,static/description/icon.png" />
+    <menuitem id="exam_main_menu" parent="exam_root_menu" name="Exam" sequence="3"/>
+    <menuitem id="exam_sub_menu" parent="eagleedu_exam.exam_main_menu" action="action_eagleedu_exam" name="Exam" sequence="12"/>
+    <menuitem id="exam_configuration_menu" parent="eagleedu_exam.exam_root_menu" name="Configuration" sequence="35"/>
+    <menuitem id="exam_type_menu" parent="eagleedu_exam.exam_configuration_menu" action="action_eagleedu_exam" name="Exam Types" sequence="15"/>
+
+</eagle>

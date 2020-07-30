@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<eagle>
+
+    <record id="view_eagleedu_syllabus_tree" model="ir.ui.view">
+        <field name="name">eagleedu.syllabus.tree</field>
+        <field name="model">eagleedu.syllabus</field>
+        <field name="arch" type="xml">
+            <tree string="Syllabus Name">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_eagleedu_syllabus_form" model="ir.ui.view">
+        <field name="name">eagleedu.syllabus.form</field>
+        <field name="model">eagleedu.syllabus</field>
+        <field name="arch" type="xml">
+            <form string="Syllabus Name">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="standard_class_id"/>
+                            <field name="academic_year"/>
+                            <field name="subject_id"/>
+
+                        </group>
+                        <group>
+
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_eagleedu_syllabus" model="ir.actions.act_window">
+        <field name="name">Syllabus Name</field>
+        <field name="res_model">eagleedu.syllabus</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p syllabus="oe_view_nocontent_create">
+                Create the your first academic syllabus of Class here.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="eagleedu_main_menu_conf" name="Configuration" parent="eagleedu_menu_root"/>
+
+    <menuitem action="action_eagleedu_syllabus" parent="eagleedu_submenu_class_conf"
+              id="menu_action_eagleedu_syllabus" name = "Syllabus" sequence="30"/>
+
+
+</eagle>
+
+

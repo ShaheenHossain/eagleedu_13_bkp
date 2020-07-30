@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<eagle>
+
+    <record id="view_eagleedu_class_division_tree" model="ir.ui.view">
+        <field name="name">eagleedu.class.division.tree</field>
+        <field name="model">eagleedu.class.division</field>
+        <field name="arch" type="xml">
+            <tree string="Class Division">
+                <field name="division_id"/>
+                <field name="academic_year_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_eagleedu_class_division_form" model="ir.ui.view">
+        <field name="name">eagleedu.class.division.form</field>
+        <field name="model">eagleedu.class.division</field>
+        <field name="arch" type="xml">
+            <form string="Class Division">
+                <sheet string="Class">
+                    <div class="oe_button_box" name="button_box">
+<!--
+                        <button name="view_students" type="object" widget="statinfo"
+                                class="oe_stat_button" icon="fa-code-branch" attrs="{'invisible': [('student_count', '=', 0)]}">
+                            <field name="student_count" widget="statinfo" string="Students"/>
+                        </button>
+-->
+                    </div>
+                        <group col="4">
+                            <field name="name"/>
+                            <field name="display"/>
+                            <field name="actual_strength"/>
+                            <field name="academic_year_id" attrs="{'readonly':[('id','>',0)]}"/>
+                            <field name="instructor_id"/>
+                            <field name="class_id" attrs="{'readonly':[('id','>',0)]}"/>
+                            <field name="division_id" attrs="{'readonly':[('id','>',0)]}"/>
+                            <field name="section_id" attrs="{'readonly':[('id','>',0)]}"/>
+<!--
+                            <field name="class_room" />
+-->
+                        </group>
+                    <notebook>
+                        <page string="Students">
+                            <field name="students_ids" nolabel="1">
+                                <tree string="Students" editable="bottom" create="false">
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </page>
+
+                        <page string="Amenities">
+                            <!--<field name="amenities_ids" nolabel="1">-->
+                                <!--<tree string="Amenities" editable="bottom">-->
+                                    <!--<field name="name"/>-->
+                                    <!--<field name="qty"/>-->
+                                <!--</tree>-->
+                            <!--</field>-->
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="view_eagleedu_class_division_search" model="ir.ui.view">
+        <field name="name">Class Division </field>
+        <field name="model">eagleedu.class.division</field>
+        <field name="arch" type="xml">
+            <search string="Search Class Sections">
+                <field name="academic_year_id"/>
+                <!--<filter string="Rejected" name="rejected" domain="[('state','=','reject')]"/>-->
+                <group expand='0' string='Group by...'>
+                    <!--<filter string='Academic Year' name="group_batch" icon="fa-user" domain="[]" context="{'group_by' : 'academicyear'}"/>-->
+               </group>
+           </search>
+        </field>
+    </record>
+
+    <record id="action_eagleedu_class_division" model="ir.actions.act_window">
+        <field name="name">Class Division</field>
+        <field name="res_model">eagleedu.class.division</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Create the Class Division here.
+            </p>
+        </field>
+    </record>
+
+
+     <menuitem id="eagleedu_class_division_submenu" name="Class Division"
+            parent="eagleedu_main_menu_admission" action="action_eagleedu_class_division"/>
+
+
+</eagle>

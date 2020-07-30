@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<eagle>
+
+    <record id="view_eagleedu_group_division_tree" model="ir.ui.view">
+        <field name="name">eagleedu.group_division.tree</field>
+        <field name="model">eagleedu.group_division</field>
+        <field name="arch" type="xml">
+            <tree string="Group Division Name">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_eagleedu_group_division_form" model="ir.ui.view">
+        <field name="name">eagleedu.group_division.form</field>
+        <field name="model">eagleedu.group_division</field>
+        <field name="arch" type="xml">
+            <form string="Group Division Name">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_eagleedu_group_division" model="ir.actions.act_window">
+        <field name="name">Group Division Name</field>
+        <field name="res_model">eagleedu.group_division</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p groupdivision="oe_view_nocontent_create">
+                Create the your first academic Section of Class here.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="eagleedu_main_menu_conf" name="Configuration" parent="eagleedu_menu_root"/>
+
+    <menuitem action="action_eagleedu_group_division" parent="eagleedu_submenu_class_conf"
+              id="menu_action_eagleedu_group_division" name = "Group Division" sequence="40"/>
+
+
+</eagle>
