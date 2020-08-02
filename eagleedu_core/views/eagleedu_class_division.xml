@@ -66,7 +66,6 @@
         </field>
     </record>
 
-
     <record id="view_eagleedu_class_division_search" model="ir.ui.view">
         <field name="name">Class Division </field>
         <field name="model">eagleedu.class.division</field>
@@ -93,6 +92,105 @@
             </p>
         </field>
     </record>
+
+
+    <record id="view_eagleedu_roomname_tree" model="ir.ui.view">
+        <field name="name">eagleedu.roomname.tree</field>
+        <field name="model">eagleedu.roomname</field>
+        <field name="arch" type="xml">
+            <tree string="Room Name">
+                <field name="name"/>
+                <field name="code"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_eagleedu_roomname_form" model="ir.ui.view">
+        <field name="name">eagleedu.roomname.form</field>
+        <field name="model">eagleedu.roomname</field>
+        <field name="arch" type="xml">
+            <form string="Room Name">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="code"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_eagleedu_roomname" model="ir.actions.act_window">
+        <field name="name">Room Name</field>
+        <field name="res_model">eagleedu.roomname</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p subject="oe_view_nocontent_create">
+                Create the your first academic Subject of Class here.
+            </p>
+        </field>
+    </record>
+
+
+    <record id="view_eagleedu_roomnumber_tree" model="ir.ui.view">
+        <field name="name">eagleedu.roomnumber.tree</field>
+        <field name="model">eagleedu.roomnumber</field>
+        <field name="arch" type="xml">
+            <tree string="Room Number">
+                <field name="name"/>
+                <field name="code"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_eagleedu_roomnumber_form" model="ir.ui.view">
+        <field name="name">eagleedu.roomnumber.form</field>
+        <field name="model">eagleedu.roomnumber</field>
+        <field name="arch" type="xml">
+            <form string="Room Number">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="code"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_eagleedu_roomnumber" model="ir.actions.act_window">
+        <field name="name">Room Number</field>
+        <field name="res_model">eagleedu.roomnumber</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p subject="oe_view_nocontent_create">
+                Create the your first academic Subject of Class here.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="eagleedu_main_menu_conf" name="Configuration" parent="eagleedu_menu_root"/>
+
+    <menuitem action="action_eagleedu_roomnumber" parent="eagleedu_submenu_class_conf"
+              id="menu_action_eagleedu_roomnumber" name = "Room Number" sequence="60"/>
+
+
+    <menuitem id="eagleedu_main_menu_conf" name="Configuration" parent="eagleedu_menu_root"/>
+
+    <menuitem action="action_eagleedu_roomname" parent="eagleedu_submenu_class_conf"
+              id="menu_action_eagleedu_roomname" name = "Room Name" sequence="50"/>
 
 
      <menuitem id="eagleedu_class_division_submenu" name="Class Division"
