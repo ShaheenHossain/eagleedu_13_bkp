@@ -9,7 +9,10 @@ class EagleeduClassDivision(models.Model):
 
     name = fields.Char(string='Name')
     display=fields.Char('Class Name')
-    actual_strength = fields.Integer(string='Max student No', help="Total strength of the class")
+    room_id=fields.Many2one('eagleedu.roomname', string="Room Name")
+    roomnong_id=fields.Many2one('eagleedu.roomnumber', string="Room Number")
+    # roomname_id=fields.Many2one('eagleedu.roomname')
+    actual_strength = fields.Integer(string='Max student No', default=60, help="Total strength of the class")
     instructor_id = fields.Many2one('eagleedu.instructor', string='Class Teacher', help="Class teacher/Faculty")
     # class_division_id = fields.Char('eagleedu.class.division', string="Class Division")
     academic_year_id = fields.Many2one('eagleedu.academic.year', string='Academic Year',
@@ -81,3 +84,16 @@ class EagleeduClassDivision(models.Model):
     _sql_constraints=[
         ('ad_no', 'unique(name)', "class should be unique!"),
     ]
+
+class EagleeduRoomsnumber(models.Model):
+    _name = 'eagleedu.roomnumber'
+    _description = "Room Number "
+    name = fields.Integer(string='Room Number', help="Enter the Room Number of the Class")
+    code = fields.Char(string='Code Number', help="Enter the Room Code Number of the Class")
+
+
+class EagleeduRoomname(models.Model):
+    _name = 'eagleedu.roomname'
+    _description = "Room Name "
+    name = fields.Char(string='Room Name', help="Enter the Room Name of the Class")
+    code = fields.Char(string='Room Code', help="Enter the Room Code of the Class")

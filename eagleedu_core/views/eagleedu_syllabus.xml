@@ -78,7 +78,7 @@
                 <field name="academic_year"/>
                 <group expand='0' string='Group by...'>
                     <filter string='Batch' name="group_batch" icon="fa-pencil-square-o" domain="[]" context="{'group_by' : 'academic_year'}"/>
-                    <filter string='Level' name="group_level" icon="fa-pencil-square-o" domain="[]" context="{'group_by' : 'class_id'}"/>
+                    <filter string='Class' name="group_level" icon="fa-pencil-square-o" domain="[]" context="{'group_by' : 'class_id'}"/>
                </group>
            </search>
         </field>

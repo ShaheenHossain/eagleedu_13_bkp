@@ -18,3 +18,5 @@ access_eagleedu_class_division,access.eagleedu.class.division,model_eagleedu_cla
 access_eagleedu_assigning_class,access.eagleedu.assigning.class,model_eagleedu_assigning_class,,1,1,1,1
 access_eagleedu_student_list,access.eagleedu.student.list,model_eagleedu_student_list,,1,1,1,1
 access_eagleedu_class_history,access.eagleedu.class.history,model_eagleedu_class_history,,1,1,1,1
+access_eagleedu_roomname,access.eagleedu.roomname,model_eagleedu_roomname,,1,1,1,1
+access_eagleedu_roomnumber,access.eagleedu.roomnumber,model_eagleedu_roomnumber,,1,1,1,1
