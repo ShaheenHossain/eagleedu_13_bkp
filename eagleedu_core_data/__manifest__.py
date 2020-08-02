@@ -20,7 +20,7 @@ This module for This is a e education management system
             'data/eagleedu.roomnumber.csv',
             'data/eagleedu.roomname.csv',
             'data/eagleedu.standard_class.csv',
-            # 'data/eagleedu.guardian.relation.csv',
+            'data/eagleedu.guardian.relation.csv',
             # 'data/eagleedu.bddistrict.csv',
 
             #'views/eagleedu_core_data.xml',

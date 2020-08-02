@@ -20,3 +20,4 @@ access_eagleedu_student_list,access.eagleedu.student.list,model_eagleedu_student
 access_eagleedu_class_history,access.eagleedu.class.history,model_eagleedu_class_history,,1,1,1,1
 access_eagleedu_roomname,access.eagleedu.roomname,model_eagleedu_roomname,,1,1,1,1
 access_eagleedu_roomnumber,access.eagleedu.roomnumber,model_eagleedu_roomnumber,,1,1,1,1
+access_eagleedu_guardian_relation,access.eagleedu.guardian.relation,model_eagleedu_guardian_relation,,1,1,1,1

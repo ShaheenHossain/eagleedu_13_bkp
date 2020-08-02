@@ -32,59 +32,38 @@ class EagleeduApplication(models.Model):
     mother_mobile = fields.Char(string="Mother's Mobile No", help="mother's Mobile No")
     date_of_birth = fields.Date(string="Date Of birth", help="Enter your DOB")
     age = fields.Char(compute="get_student_age", string="Age", store=True, help="Enter your DOB")
-
     st_gender = fields.Selection([('male', 'Male'), ('female', 'Female'), ('other', 'Other')],
-                                string='Gender', required=False, track_visibility='onchange',
-                                help="Your Gender is ")
+                                string='Gender', required=False, track_visibility='onchange')
     st_blood_group = fields.Selection([('a+', 'A+'), ('a-', 'A-'), ('b+', 'B+'), ('o+', 'O+'), ('o-', 'O-'),
-                                    ('ab-', 'AB-'), ('ab+', 'AB+')],
-                                   string='Blood Group', track_visibility='onchange',
-                                   help="Your Blood Group is ")
+                                    ('ab-', 'AB-'), ('ab+', 'AB+')], string='Blood Group', track_visibility='onchange')
     st_passport_no = fields.Char(string="Passport No.", help="Proud to say my father is", required=False)
     nationality = fields.Many2one('res.country', string='Nationality', ondelete='restrict',default=19,
                                 help="Select the Nationality")
-    academic_year = fields.Many2one('eagleedu.academic.year', string='Academic Year',
-                                help="Choose Academic year for which the admission is choosing")
-
-
-    # def _get_default_ay(self, cr, uid, context=None):
-    #     res = self.pool.get('eagleedu.academic.year').search(cr, uid, [('name', '=', academic_year)], context=context)
-    #     return
-    #     return res and res[0] or False
-    #
-    #
-    # _defaults = {
-    #     'academic_year': _get_default_ay,
-    # }
-
-
-
-    # user_id = fields.Many2one('res.users', 'User', default=lambda self: self.env.user)
-    # application_date = fields.Datetime('Application Date', default=lambda self: fields.datetime.now())  # , default=fields.Datetime.now, required=True
-
-    # self.env.ref('module_name.reference_record_id').id
-
+    academic_year = fields.Many2one('eagleedu.academic.year', string='Academic Year')
     house_no = fields.Char(string='House No.', help="Enter the House No.")
     road_no = fields.Char(string='Area/Road No.', help="Enter the Area or Road No.")
     post_office = fields.Char(string='Post Office', help="Enter the Post Office Name")
     city = fields.Char(string='City', help="Enter the City name")
     bd_division_id = fields.Many2one('eagleedu.bddivision', string= 'State / Division')
-    country_id = fields.Many2one('res.country', string='Country', ondelete='restrict',default=19,
-                                 help="Select the Country")
-    if_same_address = fields.Boolean(string="Permanent Address same as above", default=True,
-                                     help="Tick the field if the Present and permanent address is same")
+    country_id = fields.Many2one('res.country', string='Country', ondelete='restrict',default=19)
+    if_same_address = fields.Boolean(string="Permanent Address same as above", default=True)
     per_village = fields.Char(string='Village Name', help="Enter the Village Name")
     per_po = fields.Char(string='Post Office Name', help="Enter the Post office Name ")
     per_ps = fields.Char(string='Police Station', help="Enter the Police Station Name")
     per_dist_id = fields.Many2one('eagleedu.bddistrict', string='District', help="Enter the City of District name")
     per_bd_division_id = fields.Many2one('eagleedu.bddivision', string='State / Division', help="Enter the City of District name")
-    per_country_id = fields.Many2one('res.country', string='Country', ondelete='restrict', default=19,
-                                     help="Select the Country")
+    per_country_id = fields.Many2one('res.country', string='Country', ondelete='restrict', default=19)
+
     guardian_name = fields.Char(string="Guardian's Name", help="Proud to say my guardian is")
+    guardian_relation = fields.Many2one('eagleedu.guardian.relation', string="Relation to Guardian")
+    guardian_mobile = fields.Char(string="guardian's Mobile No", help="guardian's Mobile No")
+    description = fields.Text(string="Note")
+
     religious_id = fields.Many2one('eagleedu.religious', string="Religious", help="My Religion is ")
     standard_class = fields.Many2one('eagleedu.standard_class')
-    academic_year = fields.Many2one('eagleedu.academic.year', string='Academic Year')
     group_division = fields.Many2one('eagleedu.group_division')
+
+
 
     student_id=fields.Char('Student Id')
     roll_no = fields.Integer('Roll No')
@@ -97,8 +76,7 @@ class EagleeduApplication(models.Model):
     email = fields.Char(string="Student Email", help="Enter E-mail id for contact purpose")
     phone = fields.Char(string="Student Phone", help="Enter Phone no. for contact purpose")
     mobile = fields.Char(string="Student Mobile", help="Enter Mobile num for contact purpose")
-    nationality = fields.Many2one('res.country', string='Nationality', ondelete='restrict',default=19,
-                                  help="Select the Nationality")
+    nationality = fields.Many2one('res.country', string='Nationality', ondelete='restrict',default=19)
 
     # @api.depends('application_no', 'application_no.birthday', 'application_date')
     @api.depends('date_of_birth', 'application_date')
@@ -115,6 +93,17 @@ class EagleeduApplication(models.Model):
                     age = str(delta.years) + _(" Year")
             rec.age = age
 
+
+    @api.onchange('guardian_relation')
+    def guardian_relation_changed(self):
+        for rec in self:
+            if rec.guardian_relation.name:
+                if  rec.guardian_relation.name=='Father':
+                    rec.guardian_mobile = rec.father_mobile
+                    rec.guardian_name=rec.st_father_name
+                elif  rec.guardian_relation.name=='Mother':
+                    rec.guardian_mobile = rec.mother_mobile
+                    rec.guardian_name = rec.st_mother_name
 
 
     @api.model
@@ -227,3 +216,7 @@ class EagleeduGuardianRelation(models.Model):
     _name = 'eagleedu.guardian.relation'
     _description = 'This the Guardian'
     name = fields.Char()
+    gender=fields.Selection([('male',"Male"), ('female','Female')])
+    relation=fields.Char(string='Relation', required=False)
+    reverse_male=fields.Char(string='Reverse  Relation (Male)',required=False)
+    reverse_female=fields.Char(string='Reverse Relation (Female)',required=False)
