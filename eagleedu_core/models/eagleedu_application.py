@@ -61,8 +61,15 @@ class EagleeduApplication(models.Model):
 
     religious_id = fields.Many2one('eagleedu.religious', string="Religious", help="My Religion is ")
     standard_class = fields.Many2one('eagleedu.standard_class')
+    class_id = fields.Many2one('eagleedu.standard_class')
+
     group_division = fields.Many2one('eagleedu.group_division')
 
+    register_id = fields.Many2one('eagleedu.register', string="Admission Register", required=False,
+                                      help="Enter the admission register Name")
+
+    academic_year_id = fields.Many2one('eagleedu.academic.year', related='register_id.academic_year', string='Academic Year',
+                                       help="Choose Academic year for which the admission is choosing")
 
 
     student_id=fields.Char('Student Id')
@@ -211,12 +218,3 @@ class EagleeduReligious(models.Model):
 class EagleeduOrganization(models.Model):
     _description = 'This the Organization'
     _inherit = 'res.company'
-
-class EagleeduGuardianRelation(models.Model):
-    _name = 'eagleedu.guardian.relation'
-    _description = 'This the Guardian'
-    name = fields.Char()
-    gender=fields.Selection([('male',"Male"), ('female','Female')])
-    relation=fields.Char(string='Relation', required=False)
-    reverse_male=fields.Char(string='Reverse  Relation (Male)',required=False)
-    reverse_female=fields.Char(string='Reverse Relation (Female)',required=False)

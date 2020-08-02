@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<eagle>
+
+    <record id="view_eagleedu_roomnumber_tree" model="ir.ui.view">
+        <field name="name">eagleedu.roomnumber.tree</field>
+        <field name="model">eagleedu.roomnumber</field>
+        <field name="arch" type="xml">
+            <tree string="Room Number">
+                <field name="name"/>
+                <field name="code"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_eagleedu_roomnumber_form" model="ir.ui.view">
+        <field name="name">eagleedu.roomnumber.form</field>
+        <field name="model">eagleedu.roomnumber</field>
+        <field name="arch" type="xml">
+            <form string="Room Number">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="code"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_eagleedu_roomnumber" model="ir.actions.act_window">
+        <field name="name">Room Number</field>
+        <field name="res_model">eagleedu.roomnumber</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p subject="oe_view_nocontent_create">
+                Create the your first academic Subject of Class here.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="eagleedu_main_menu_conf" name="Configuration" parent="eagleedu_menu_root"/>
+
+    <menuitem action="action_eagleedu_roomnumber" parent="eagleedu_submenu_class_conf"
+              id="menu_action_eagleedu_roomnumber" name = "Room Number" sequence="60"/>
+
+
+</eagle>

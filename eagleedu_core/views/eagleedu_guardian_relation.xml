@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<eagle>
+
+    <record id="view_eagleedu_guardian_relation_tree" model="ir.ui.view">
+        <field name="name">eagleedu.guardian.relation.tree</field>
+        <field name="model">eagleedu.guardian.relation</field>
+        <field name="arch" type="xml">
+            <tree string="Class Category Name">
+                <field name="name"/>
+                <field name="gender"/>
+                <field name="relation"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_eagleedu_guardian_relation_form" model="ir.ui.view">
+        <field name="name">eagleedu.guardian.relation.form</field>
+        <field name="model">eagleedu.guardian.relation</field>
+        <field name="arch" type="xml">
+            <form string="Class Category Name">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="gender"/>
+                        </group>
+                        <group>
+                            <field name="relation"/>
+                            <field name="reverse_male"/>
+                            <field name="reverse_female"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_eagleedu_guardian_relation" model="ir.actions.act_window">
+        <field name="name">Class Category Name</field>
+        <field name="res_model">eagleedu.guardian.relation</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p subject="oe_view_nocontent_create">
+                Create the your first Guardian name e.g: Father, Mother, Brother, Sister, etc. here.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="eagleedu_main_menu_conf" name="Configuration" parent="eagleedu_menu_root"/>
+
+    <menuitem action="action_eagleedu_guardian_relation" parent="eagleedu_submenu_class_conf"
+              id="menu_action_eagleedu_guardian_relation" name = "Guardian Relation" sequence="80"/>
+
+
+</eagle>

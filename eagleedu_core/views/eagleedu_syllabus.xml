@@ -69,7 +69,6 @@
         </field>
     </record>
 
-
     <record id="view_eagleedu_syllabus_search" model="ir.ui.view">
         <field name="name">Education Syllabus</field>
         <field name="model">eagleedu.syllabus</field>
@@ -84,8 +83,6 @@
         </field>
     </record>
 
-
-
     <record id="action_eagleedu_syllabus" model="ir.actions.act_window">
         <field name="name">Syllabus Name</field>
         <field name="res_model">eagleedu.syllabus</field>
@@ -99,7 +96,7 @@
         </field>
     </record>
 
-    <menuitem id="eagleedu_main_menu_conf" name="Configuration" parent="eagleedu_menu_root"/>
+
 
     <menuitem action="action_eagleedu_syllabus" parent="eagleedu_submenu_class_conf"
               id="menu_action_eagleedu_syllabus" name = "Syllabus" sequence="30"/>

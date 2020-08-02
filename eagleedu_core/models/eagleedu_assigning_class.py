@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+
+
 from eagle import fields, models, api, _
 from eagle.exceptions import ValidationError
 
@@ -17,17 +20,16 @@ class EagleeduAssigningClass(models.Model):
     state = fields.Selection([('draft', 'Draft'), ('done', 'Done')],
                              string='State', required=True, default='draft', track_visibility='onchange')
 
-    assign_date = fields.Date(string='Assigned Date',default=fields.date.today())
 
-    #assign_date = fields.Datetime(string='Asigned Date', default=datetime.today())
+    assign_date = fields.Datetime(string='Asigned Date', default=datetime.today())
 
-    @api.model
+    #assign_date = fields.Date(string='Assigned Date',default=fields.date.today())
+
+
     def get_class_assign_name(self):
         for rec in self:
             rec.name = str(rec.admitted_class.name) + '(Assign on ' + str(rec.assign_date) +')'
             #rec.name = rec.admitted_class.name #+ '(assigned on '+ rec.assign_date +')'
-
-
 
     @api.model
     def assigning_class(self):
@@ -82,15 +84,12 @@ class EagleeduAssigningClass(models.Model):
                 'state': 'done'
                 })
 
-
-    @api.model
     def unlink(self):
         """Return warning if the Record is in done state"""
         for rec in self:
             if rec.state == 'done':
                 raise ValidationError(_("Cannot delete Record in Done state"))
 
-    @api.model
     def get_student_list(self):
         """returns the list of students applied to join the selected class"""
         for rec in self:
@@ -117,11 +116,17 @@ class EagleeduAssigningClass(models.Model):
 
 class EagleeduStudentList(models.Model):
     _name = 'eagleedu.student.list'
+    _description = 'Eagleedu Student List'
     # _inherit = ['mail.thread']
 
-    connect_id = fields.Many2one('eagleedu.assign.standard_class', string='Class')
-    student_id = fields.Many2one('eagleedu.student', string='Student')
+    connect_id = fields.Many2one('eagleedu.assigning.class', string='Class')
+    student_id = fields.Many2one('eagleedu.student', string='Students Name')
     # stu_id=fields.Char(string="Id",related='student_id.student_id')
-    class_id = fields.Many2one('eagleedu.standard_class', string='Level')
-    section_id = fields.Many2one('eagleedu.class.division', string='Class')
+    adm_no=fields.Char(string="Student ID", related='student_id.adm_no')
+    class_id = fields.Many2one('eagleedu.class', string='Level')
+    section_id = fields.Many2one('eagleedu.class.section', string='Class')
     roll_no = fields.Integer( string='Roll No')
+
+    # @api.onchange('name')
+    # def set_ay_code(self):
+    #     self.ay_code = self.name
