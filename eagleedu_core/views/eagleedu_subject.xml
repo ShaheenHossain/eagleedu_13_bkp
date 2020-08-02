@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <tree string="Subject Name">
                 <field name="name"/>
-                <field name="subject_code"/>
+                <field name="code"/>
             </tree>
         </field>
     </record>
@@ -23,7 +23,7 @@
                             <field name="name"/>
                         </group>
                         <group>
-                            <field name="subject_code"/>
+                            <field name="code"/>
                         </group>
                     </group>
                 </sheet>

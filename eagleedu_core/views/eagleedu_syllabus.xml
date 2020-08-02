@@ -7,6 +7,12 @@
         <field name="arch" type="xml">
             <tree string="Syllabus Name">
                 <field name="name"/>
+                <field name="class_id"/>
+                <field name="subject_id"/>
+                <field name="paper"/>
+                <!--<field name="total_hours"/>-->
+                <field name="description"/>
+
             </tree>
         </field>
     </record>
@@ -17,22 +23,68 @@
         <field name="arch" type="xml">
             <form string="Syllabus Name">
                 <sheet>
-                    <group>
                         <group>
-                            <field name="name"/>
-                            <field name="standard_class_id"/>
-                            <field name="academic_year"/>
-                            <field name="subject_id"/>
+                            <group>
+                                <field name="academic_year" required="1"/>
+                                <field name="class_id" required="1"/>
+                                <field name="divisional" required="1" attrs="{'invisible': [('has_group', '=',0)]}"/>
+                                <field name="has_group" required="1" attrs="{'invisible': True}"/>
+                                <field name="class_division_id" attrs="{'invisible': [('divisional', '=',False)]}"/>
+                                <field name="subject_id" required="1"/>
+                                <field name="paper"/>
+                                <field name="subject_type"/>
+                                <field name="selection_type"/>
+                                <field name="evaluation_type"/>
+                                <field name="description"/>
+                            </group>
+
+                            <group>
+                                <field name="name"/>
+                                <!--attrs="{'invisible': ['|',('academic_year', '=', False),('class_id', '=',False)]}"-->
+                                <field name="code"/>
+                                <field name="display"/>
+                            </group>
 
                         </group>
-                        <group>
 
+                        <group string="Mark Distribution">
+                            <group col="4">
+                                    <label for="exam_type" string="Exam Type"/>
+                                    <label for="max_mark" string="Max Mark"/>
+                                    <label for="pass_mark" string="Pass Mark"/>
+                                    <field name="tut_mark"/>
+                                    <field name="tut_pass" nolabel='1'/>
+                                    <field name="subj_mark"/>
+                                    <field name="subj_pass" nolabel='1'/>
+                                    <field name="obj_mark"/>
+                                    <field name="obj_pass" nolabel='1'/>
+                                    <field name="prac_mark"/>
+                                    <field name="prac_pass" nolabel='1'/>
+                                    <field name="total_mark"/>
+                                    <field name="pass_mark" nolabel='1'/>
+                            </group>
                         </group>
-                    </group>
                 </sheet>
             </form>
         </field>
     </record>
+
+
+    <record id="view_eagleedu_syllabus_search" model="ir.ui.view">
+        <field name="name">Education Syllabus</field>
+        <field name="model">eagleedu.syllabus</field>
+        <field name="arch" type="xml">
+            <search string="Syllabus">
+                <field name="academic_year"/>
+                <group expand='0' string='Group by...'>
+                    <filter string='Batch' name="group_batch" icon="fa-pencil-square-o" domain="[]" context="{'group_by' : 'academic_year'}"/>
+                    <filter string='Level' name="group_level" icon="fa-pencil-square-o" domain="[]" context="{'group_by' : 'class_id'}"/>
+               </group>
+           </search>
+        </field>
+    </record>
+
+
 
     <record id="action_eagleedu_syllabus" model="ir.actions.act_window">
         <field name="name">Syllabus Name</field>

@@ -11,7 +11,7 @@ class EagleeduClassDivision(models.Model):
     display=fields.Char('Class Name')
     actual_strength = fields.Integer(string='Max student No', help="Total strength of the class")
     instructor_id = fields.Many2one('eagleedu.instructor', string='Class Teacher', help="Class teacher/Faculty")
-    # class_division_id = fields.Char('eagleedu.class.division', string='Class Division', help="Class Division")
+    # class_division_id = fields.Char('eagleedu.class.division', string="Class Division")
     academic_year_id = fields.Many2one('eagleedu.academic.year', string='Academic Year',
                                        help="Select the Academic Year", required=True)
     class_id = fields.Many2one('eagleedu.standard_class', string='Class', required=True,
