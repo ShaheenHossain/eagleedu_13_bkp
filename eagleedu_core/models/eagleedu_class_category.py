@@ -8,3 +8,4 @@ class EagleeduClassCategory(models.Model):
     _description='Class Category list'
     name=fields.Char(string='Class Category')
     code=fields.Char(string='Category code')
+    class_category_id = fields.Many2one('eagleedu.class.category', string="Class Category")

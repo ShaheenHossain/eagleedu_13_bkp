@@ -24,8 +24,7 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="class_category"/>
-<!--
+<!--                        <field name="class_category"/>
                             <field name="class_category_auto"/>
 -->
                             <field name="standard"/>
