@@ -9,7 +9,7 @@
                     <field name="name"/>
                     <field name="st_father_name"/>
                     <field name="st_mother_name"/>
-                    <field name="standard_class"/>
+                    <field name="class_name"/>
                     <field name="academic_year"/>
                 </tree>
             </field>
@@ -60,11 +60,11 @@
                   </h2>
                 </div>
                  <group>
-                  <group string="Basic Details">
+                  <group string="Admission Details">
                     <field name="register_id" attrs="{'readonly': [('state', '=', 'done')]}"/>
                     <field name="date_of_birth"/>
                     <field name="age"/>
-                    <field name="application_date"/>
+                    <field name="application_date" attrs="{'readonly': [('state', '=', 'done')]}"/>
                     <field name="st_gender"/>
                     <field name="st_blood_group"/>
                     <field name="religious_id"/>
@@ -72,8 +72,8 @@
                   </group>
 
                   <group string="Academic Information">
-                    <field name="academic_year"/>
-                    <field name="standard_class" string="Wish to Admit"/>
+                    <field name="academic_year_id" attrs="{'readonly': [('state', '=', 'done')]}"/>
+                    <field name="class_name" string="Wish to Admit"/>
                     <field name="group_division" string="Group/Division"/>
                   </group>
 
@@ -84,6 +84,7 @@
                     <field name="email"/>
                     <field name="phone"/>
                     <field name="mobile"/>
+                    <field name="description"/>
                   </group>
 
                   <group string="Parent's Information">
@@ -128,7 +129,7 @@
         <field name="padding">4</field>
     </record>
 
-    <record id="application_search" model="ir.ui.view">
+        <record id="application_search" model="ir.ui.view">
         <field name="name">Student Application</field>
         <field name="model">eagleedu.application</field>
         <field name="arch" type="xml">
@@ -150,6 +151,8 @@
         </field>
     </record>
 
+
+
     <record id="action_eagleedu_application" model="ir.actions.act_window">
         <field name="name">Student Application</field>
         <field name="res_model">eagleedu.application</field>
@@ -164,7 +167,6 @@
             </p>
         </field>
     </record>
-
 
     <menuitem id = "eagleedu_menu_application" name = "Application"
               parent="eagleedu_main_menu_admission" action="action_eagleedu_application"/>

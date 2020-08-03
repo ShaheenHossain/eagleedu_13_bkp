@@ -8,8 +8,6 @@
             <tree string="Academic Year">
                 <field name="name"/>
                 <field name="ay_code"/>
-                <field name="start_date"/>
-                <field name="end_date"/>
             </tree>
         </field>
     </record>
@@ -27,11 +25,11 @@
                             <field name="sequence"/>
                         </group>
                         <group>
-                            <field name="ay_code"/>
+                            <field name="ay_code" style="text-transform: lowercase;"/>
                             <field name="end_date"/>
                             <field name="active"/>
                         </group>
-                        <field name="ay_description" placeholder="Enter the description"/>
+                        <field name="academic_year_description" placeholder="Enter the description"/>
                     </group>
                 </sheet>
             </form>
@@ -40,7 +38,7 @@
 <!--
     <record id="view_eagleedu_academic_month_tree" model="ir.ui.view">
         <field name="name">education.academic.month.tree</field>
-        <field name="model">education.academic.month</field>
+        <field name="res_model">education.academic.month</field>
         <field name="arch" type="xml">
             <tree string="Academic Month">
                 <field name="years"/>
@@ -55,7 +53,7 @@
 <!--
     <record id="view_eagleedu_academic_month_form" model="ir.ui.view">
         <field name="name">education.academic.month.form</field>
-        <field name="model">education.academic.month</field>
+        <field name="res_model">education.academic.month</field>
         <field name="arch" type="xml">
             <form string="Academic Month">
                 <group>
@@ -85,9 +83,9 @@
 
     <!--<record id="action_eagleedu_academic_month" model="ir.actions.act_window">
         <field name="name">Academic Month</field>
-        <field name="res_model">education.academic.month</field>
+        <field name="res_res_model">education.academic.month</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
         <field name="view_mode">tree,form</field>
         <field name="help" type="html">
             <p class="oe_view_nocontent_create">

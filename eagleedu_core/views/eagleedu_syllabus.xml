@@ -29,7 +29,7 @@
                                 <field name="class_id" required="1"/>
                                 <field name="divisional" required="1" attrs="{'invisible': [('has_group', '=',0)]}"/>
                                 <field name="has_group" required="1" attrs="{'invisible': True}"/>
-                                <field name="class_division_id" attrs="{'invisible': [('divisional', '=',False)]}"/>
+                                <field name="division_id" attrs="{'invisible': [('divisional', '=',False)]}"/>
                                 <field name="subject_id" required="1"/>
                                 <field name="paper"/>
                                 <field name="subject_type"/>
@@ -77,7 +77,7 @@
                 <field name="academic_year"/>
                 <group expand='0' string='Group by...'>
                     <filter string='Batch' name="group_batch" icon="fa-pencil-square-o" domain="[]" context="{'group_by' : 'academic_year'}"/>
-                    <filter string='Class' name="group_level" icon="fa-pencil-square-o" domain="[]" context="{'group_by' : 'class_id'}"/>
+                    <filter string='Level' name="group_level" icon="fa-pencil-square-o" domain="[]" context="{'group_by' : 'class_id'}"/>
                </group>
            </search>
         </field>
@@ -96,7 +96,7 @@
         </field>
     </record>
 
-
+    <menuitem id="eagleedu_main_menu_conf" name="Configuration" parent="eagleedu_menu_root"/>
 
     <menuitem action="action_eagleedu_syllabus" parent="eagleedu_submenu_class_conf"
               id="menu_action_eagleedu_syllabus" name = "Syllabus" sequence="30"/>

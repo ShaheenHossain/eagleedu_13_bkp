@@ -10,15 +10,14 @@ class EagleeduClassHistory(models.Model):
     _description = "Student Class history"
     _rec_name = 'class_id'
 
-    academic_year_id = fields.Many2one('eagleedu.academic.year', string='Academic Year',
-                                       help="Select the Academic Year")
-    class_id = fields.Many2one('eagleedu.class.division', string='Class',
-                               help="Select the class")
-    level=fields.Many2one('eagleedu.standard_class',string='level',related='class_id.class_id',store=True) #related='class_id.class_id'
-    section=fields.Many2one('eagleedu.class_section',string='section',related='class_id.section_id') #
+    academic_year_id = fields.Many2one('eagleedu.academic.year', string='Academic Year', help="Select the Academic Year")
+    class_id = fields.Many2one('eagleedu.class.division', string='Class', help="Select the class")
+    level=fields.Many2one('eagleedu.class',string='level',related='class_id.class_id',store=True) #related='class_id.class_id'
+    section=fields.Many2one('eagleedu.class.section',string='section',related='class_id.section_id') #
     from_date=fields.Date('From')
     till_date=fields.Date('Till')
     student_id = fields.Many2one('eagleedu.student', string='Students')
+    adm_no=fields.Char(string="Student ID", related='student_id.adm_no')
     roll_no=fields.Integer('Roll No',required=True)
     compulsory_subjects=fields.Many2many('eagleedu.syllabus','eagleedu_syllabus_class_history_rel',
                                          'compulsory_subjects','compulsory_for',string='Compulsory')

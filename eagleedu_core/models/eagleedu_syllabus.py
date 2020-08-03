@@ -11,12 +11,11 @@ class EagleeduSyllabus(models.Model):
 
     name = fields.Char(string='Name', help="Enter the Name of the Syllabus")
     code = fields.Char('Code', compute="_get_code")
-
     has_group=fields.Integer(string='Has Group')
     divisional=fields.Boolean("Grouping ?")
-    class_division_id = fields.Many2one('eagleedu.class.division', string='Group')
+    division_id = fields.Many2one('eagleedu.class.division', string='Group')
     display=fields.Char('Syllabus Display',help="This is printed on the marksheet as Subject")
-    class_id = fields.Many2one('eagleedu.standard_class', string='Class ID')
+    class_id = fields.Many2one('eagleedu.class', string='Class ID')
     subject_id = fields.Many2one('eagleedu.subject', string='Subject')
     academic_year = fields.Many2one('eagleedu.academic.year', string='Academic Year')
     paper = fields.Char( string='Paper')
@@ -53,7 +52,7 @@ class EagleeduSyllabus(models.Model):
     optional_for = fields.Many2many('eagleedu.class.history', 'eagleedu_syllabus_class_history_optional_rel',
                                     'optional_for', 'optional_subjects', 'Optional for')
 
-    @api.onchange('academic_year','class_id','class_division_id','subject_id','paper')
+    @api.onchange('academic_year','class_id','division_id','subject_id','paper')
     def _get_code(self):
         for rec in self:
             recname=''
@@ -69,12 +68,12 @@ class EagleeduSyllabus(models.Model):
                 if  rec.class_id :
                     if rec.academic_year :
                         if rec.divisional == True:
-                            recname=recname + rec.class_id.name +'-' + rec.academic_year.name # +' ('+rec.class_division_id.name +')'
-                            reccode=reccode + rec.class_id.code +'-' + rec.academic_year.ay_code # +' ('+rec.class_division_id.code +')'
+                            recname=recname + rec.class_id.name +'-' + rec.academic_year.name # +' ('+rec.division_id.name +')'
+                            reccode=reccode + rec.class_id.code +'-' + rec.academic_year.ay_code # +' ('+rec.division_id.code +')'
                         else:
                             recname = recname + rec.class_id.name + '-' + rec.academic_year.name
                             reccode = reccode + rec.class_id.code + '-' + rec.academic_year.ay_code
-                            rec.class_division_id=False
+                            rec.division_id=False
             rec.name=recname
             rec.code=reccode
     @api.model
@@ -83,4 +82,4 @@ class EagleeduSyllabus(models.Model):
         for rec in self:
             rec.total_mark=rec.tut_mark+rec.subj_mark+rec.obj_mark+rec.prac_mark
             rec.pass_mark=rec.tut_pass+rec.subj_pass+rec.obj_pass+rec.prac_pass
-    _sql_constraints = [('unque_syllabus_batch_level','unique(subject_id,academic_year,class_division_id,class_id,paper)','Subject Already added!'),]
+    _sql_constraints = [('unque_syllabus_batch_level','unique(subject_id,academic_year,division_id,class_id,paper)','Subject Already added!'),]

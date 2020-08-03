@@ -4,7 +4,7 @@ from eagle import fields, models, api, _
 
 class EagleeduInstructor(models.Model):
     _name = 'eagleedu.instructor'
-    # _inherit = ['mail.thread']
+    _inherit = ['mail.thread']
     _description = 'All Teachers Details'
 
     @api.model

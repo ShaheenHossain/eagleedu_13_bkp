@@ -2,20 +2,21 @@
 <eagle>
 
     <record id="view_eagleedu_class_category_tree" model="ir.ui.view">
-        <field name="name">eagleedu.class_category.tree</field>
-        <field name="model">eagleedu.class_category</field>
+        <field name="name">eagleedu.class.category.tree</field>
+        <field name="model">eagleedu.class.category</field>
         <field name="arch" type="xml">
-            <tree string="category Name">
+            <tree string="Class Category Name">
                 <field name="name"/>
+                <field name="code"/>
             </tree>
         </field>
     </record>
 
     <record id="view_eagleedu_class_category_form" model="ir.ui.view">
-        <field name="name">eagleedu.class_category.form</field>
-        <field name="model">eagleedu.class_category</field>
+        <field name="name">eagleedu.class.category.form</field>
+        <field name="model">eagleedu.class.category</field>
         <field name="arch" type="xml">
-            <form string="category Name">
+            <form string="Class Category Name">
                 <sheet>
                     <group>
                         <group>
@@ -31,14 +32,14 @@
     </record>
 
     <record id="action_eagleedu_class_category" model="ir.actions.act_window">
-        <field name="name">category Name</field>
-        <field name="res_model">eagleedu.class_category</field>
+        <field name="name">Class Category Name</field>
+        <field name="res_model">eagleedu.class.category</field>
         <field name="type">ir.actions.act_window</field>
         <field name="view_mode">form</field>
         <field name="view_mode">tree,form</field>
         <field name="help" type="html">
-            <p category="oe_view_nocontent_create">
-                Create the your first academic category of Class here.
+            <p subject="oe_view_nocontent_create">
+                Create the your first Class Category name e.g: Primary Class, High School Class, College etc. here.
             </p>
         </field>
     </record>
@@ -46,7 +47,7 @@
     <menuitem id="eagleedu_main_menu_conf" name="Configuration" parent="eagleedu_menu_root"/>
 
     <menuitem action="action_eagleedu_class_category" parent="eagleedu_submenu_class_conf"
-              id="menu_action_eagleedu_class_category" name = "Category" sequence="40"/>
+              id="menu_action_eagleedu_class_category" name = "Class Category" sequence="70"/>
 
 
 </eagle>

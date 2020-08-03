@@ -32,10 +32,13 @@ class EagleeduStudent(models.Model):
     application_no = fields.Char(string='Application  No', required=True, copy=False, readonly=True,
                        index=True, default=lambda self: _('New'))
     company_id = fields.Many2one('res.company', string='Company', default=lambda self: self.env.user.company_id)
-    standard_class = fields.Many2one('eagleedu.standard_class', string="Class Name", help="Enter Class Name")
-    class_section_id = fields.Many2one('eagleedu.class_section', string="Section", help="Enter Class Section Name")
+    admission_class = fields.Many2one('eagleedu.class', string="Class Name", help="Enter Class Name")
+    class_id = fields.Many2one('eagleedu.class.division', string="Class Section")
+    class_name = fields.Many2one('eagleedu.class', string="Class Name")
+    section_id = fields.Many2one('eagleedu.class.section', related='class_id.section_id', string="Section", help="Enter Class Section Name")
     group_division = fields.Many2one('eagleedu.group_division', string="Group Name", help="Enter Class Section Name")
     academic_year = fields.Many2one('eagleedu.academic.year', string= "Academic Year", help="Select Academic Year")
+    academic_year_id = fields.Many2one('eagleedu.academic.year', related='class_id.academic_year_id', string= "Academic Year", help="Select Academic Year")
     roll_no = fields.Integer(string="Roll No.", help="Enter Roll No.")
 
     st_name_b = fields.Char(string='Student Bangla Name')
@@ -73,7 +76,7 @@ class EagleeduStudent(models.Model):
     per_po = fields.Char(string='Post Office Name', help="Enter the Post office Name ")
     per_ps = fields.Char(string='Police Station', help="Enter the Police Station Name")
     per_dist_id = fields.Many2one('eagleedu.bddistrict', string='District', help="Enter the City of District name")
-    per_bd_division_id = fields.Many2one('eagleedu.bddivision', string='Division/Province', help="Enter the Division name")
+    per_bd_division_id = fields.Many2one('eagleedu.bddivision', string= 'Division')
     per_country_id = fields.Many2one('res.country', string='Country', ondelete='restrict', default=19)
 
     guardian_name = fields.Char(string="Guardian's Name", help="Proud to say my guardian is")
@@ -88,5 +91,10 @@ class EagleeduStudent(models.Model):
     mobile = fields.Char(string="Student Mobile", help="Enter Mobile num for contact purpose")
     nationality = fields.Many2one('res.country', string='Nationality', ondelete='restrict',default=19,
                                   help="Select the Nationality")
+    assigned=fields.Boolean(default=False)
+    application_id = fields.Many2one('eagleedu.application', string="Application No")
 
 
+    @api.onchange('class_id')
+    def set_div_ay_sec(self):
+        self.ay_code = self.name

@@ -9,11 +9,11 @@ from datetime import datetime
 class EagleeduAssigningClass(models.Model):
     _name = 'eagleedu.assigning.class'
     _description = 'Assign the Students to Class'
-    # _inherit = ['mail.thread']
+    _inherit = ['mail.thread']
     # _rec_name = 'class_assign_name'
     name = fields.Char('Class Assign Register', compute='get_class_assign_name')
     keep_roll_no=fields.Boolean("keep Roll No")
-    class_id = fields.Many2one('eagleedu.standard_class', string='Class')
+    class_id = fields.Many2one('eagleedu.class', string='Class')
     student_list = fields.One2many('eagleedu.student.list', 'connect_id', string="Students")
     admitted_class = fields.Many2one('eagleedu.class.division', string="Admitted Class" )
     assigned_by = fields.Many2one('res.users', string='Assigned By', default=lambda self: self.env.uid)
@@ -26,12 +26,14 @@ class EagleeduAssigningClass(models.Model):
     #assign_date = fields.Date(string='Assigned Date',default=fields.date.today())
 
 
+    @api.model
     def get_class_assign_name(self):
         for rec in self:
             rec.name = str(rec.admitted_class.name) + '(Assign on ' + str(rec.assign_date) +')'
             #rec.name = rec.admitted_class.name #+ '(assigned on '+ rec.assign_date +')'
 
-    @api.model
+
+
     def assigning_class(self):
         max_roll = self.env['eagleedu.class.history'].search([('class_id','=',self.admitted_class.id)], order='roll_no desc', limit=1)
         if max_roll.roll_no:
@@ -83,6 +85,7 @@ class EagleeduAssigningClass(models.Model):
             self.write({
                 'state': 'done'
                 })
+
 
     def unlink(self):
         """Return warning if the Record is in done state"""

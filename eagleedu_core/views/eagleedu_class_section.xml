@@ -2,19 +2,19 @@
 <eagle>
 
     <record id="view_eagleedu_class_section_tree" model="ir.ui.view">
-        <field name="name">eagleedu.class_section.tree</field>
-        <field name="model">eagleedu.class_section</field>
+        <field name="name">eagleedu.class.section.tree</field>
+        <field name="model">eagleedu.class.section</field>
         <field name="arch" type="xml">
             <tree string="Section Name">
                 <field name="name"/>
-                <field name="class_section_code"/>
+                <field name="section_code"/>
             </tree>
         </field>
     </record>
 
     <record id="view_eagleedu_class_section_form" model="ir.ui.view">
-        <field name="name">eagleedu.class_section.form</field>
-        <field name="model">eagleedu.class_section</field>
+        <field name="name">eagleedu.class.section.form</field>
+        <field name="model">eagleedu.class.section</field>
         <field name="arch" type="xml">
             <form string="Section Name">
                 <sheet>
@@ -23,7 +23,7 @@
                             <field name="name"/>
                         </group>
                         <group>
-                            <field name="class_section_code"/>
+                            <field name="section_code"/>
                         </group>
                     </group>
                 </sheet>
@@ -33,7 +33,7 @@
 
     <record id="action_eagleedu_class_section" model="ir.actions.act_window">
         <field name="name">Section Name</field>
-        <field name="res_model">eagleedu.class_section</field>
+        <field name="res_model">eagleedu.class.section</field>
         <field name="type">ir.actions.act_window</field>
         <field name="view_mode">form</field>
         <field name="view_mode">tree,form</field>

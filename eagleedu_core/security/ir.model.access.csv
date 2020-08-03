@@ -4,13 +4,11 @@ access_eagleedu_bddivision,access.eagleedu.bddivision,model_eagleedu_bddivision,
 access_eagleedu_bddistrict,access.eagleedu.bddistrict,model_eagleedu_bddistrict,,1,1,1,1
 access_eagleedu_religious,access.eagleedu.religious,model_eagleedu_religious,,1,1,1,1
 access_eagleedu_student,access.eagleedu.student,model_eagleedu_student,,1,1,1,1
-access_eagleedu_standard_class,access.eagleedu.standard_class,model_eagleedu_standard_class,,1,1,1,1
+access_eagleedu_class,access.eagleedu.class,model_eagleedu_class,,1,1,1,1
 access_eagleedu_group_division,access.eagleedu.group_division,model_eagleedu_group_division,,1,1,1,1
 access_eagleedu_instructor,access.eagleedu.instructor,model_eagleedu_instructor,,1,1,1,1
-access_eagleedu_class_section,access.eagleedu.class_section,model_eagleedu_class_section,,1,1,1,1
-access_eagleedu_class_category,access.eagleedu.class_category,model_eagleedu_class_category,,1,1,1,1
 access_eagleedu_academic_year,access.eagleedu.academic.year,model_eagleedu_academic_year,,1,1,1,1
-access_eagleedu_standard_class,access.eagleedu.standard_class,model_eagleedu_standard_class,,1,1,1,1
+access_eagleedu_class_section,access.eagleedu.class.section,model_eagleedu_class_section,,1,1,1,1
 access_eagleedu_subject,access.eagleedu.subject,model_eagleedu_subject,,1,1,1,1
 access_eagleedu_syllabus,access.eagleedu.syllabus,model_eagleedu_syllabus,,1,1,1,1
 access_eagleedu_register,access.eagleedu.register,model_eagleedu_register,,1,1,1,1
@@ -20,4 +18,7 @@ access_eagleedu_student_list,access.eagleedu.student.list,model_eagleedu_student
 access_eagleedu_class_history,access.eagleedu.class.history,model_eagleedu_class_history,,1,1,1,1
 access_eagleedu_roomname,access.eagleedu.roomname,model_eagleedu_roomname,,1,1,1,1
 access_eagleedu_roomnumber,access.eagleedu.roomnumber,model_eagleedu_roomnumber,,1,1,1,1
+access_eagleedu_class_category,access.eagleedu.class.category,model_eagleedu_class_category,,1,1,1,1
 access_eagleedu_guardian_relation,access.eagleedu.guardian.relation,model_eagleedu_guardian_relation,,1,1,1,1
+access_eagleedu_campus,access.eagleedu.campus,model_eagleedu_campus,,1,1,1,1
+access_eagleedu_shift,access.eagleedu.shift,model_eagleedu_shift,,1,1,1,1

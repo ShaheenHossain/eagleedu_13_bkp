@@ -10,8 +10,8 @@
                 <field name="name"/>
                 <field name="st_father_name"/>
                 <field name="st_mother_name"/>
-                <field name="standard_class"/>
-                <field name="academic_year"/>
+                <field name="class_id"/>
+                <field name="academic_year_id"/>
             </tree>
         </field>
     </record>
@@ -51,14 +51,16 @@
 
                             <separator string="Basic Details"/>
                               <group>
-                                <field name="academic_year" string="Academic Year"/>
-                                <field name="standard_class" string="Class"/>
-                                <field name="group_division" string="Group/Division"/>
-                                <field name="class_section_id" string="Section"/>
+                                <field name="class_id" string="Class Section"/>
+                                <field name="class_name" string="Class Name"/>
+                                <field name="academic_year_id" string="Academic Year"/>
+                                <field name="section_id" string="Section"/>
                                 <field name="roll_no" string="Roll No."/>
+                                <field name="group_division" string="Group/Division"/>
                               </group>
                             <separator string="Student Information"/>
                                 <group>
+                                    <field name="application_no"/>
                                     <field name="date_of_birth"/>
                                     <field name="registration_date"/>
                                     <field name="st_gender"/>
@@ -94,7 +96,7 @@
                                 <field name="per_po"/>
                                 <field name="per_ps"/>
                                 <field name="per_dist_id"/>
-                                <field name="per_bd_division_id"/>
+                                <field name="bd_division_id"/>
                                 <field name="country_id"/>
                               </group>
                         </page>
@@ -119,9 +121,6 @@
 
     <record id="seq_eagleedu_student" model="ir.sequence">
         <field name="name">Stuent Seq</field>
-<!--
-        <field name="res_model">eagleedu.student</field>
--->
         <field name="code">eagleedu.student</field>
         <field name="prefix">ST%(year)s-</field>
 <!--        <field name="suffix">%(year)s-</field>-->

@@ -38,6 +38,7 @@
         <field name="arch" type="xml">
             <form string="Standard">
                 <group>
+                    <field name="adm_no"/>
                     <field name="student_id"/>
                     <field name="academic_year_id"/>
                     <field name="class_id"/>
@@ -122,7 +123,7 @@
 <!--
     <record id="action_eagleedu_class_tree" model="ir.actions.act_window">
         <field name="name">Standard</field>
-        <field name="res_model">eagleedu.class</field>
+        <field name="model">eagleedu.class</field>
         <field name="type">ir.actions.act_window</field>
         <field name="view_mode">form</field>
         <field name="view_mode">tree,form</field>

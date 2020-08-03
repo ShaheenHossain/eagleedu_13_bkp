@@ -14,12 +14,12 @@ This module for This is a e education management system
     'depends': [ 'base', 'eagleedu_core', ],
     'data':[
             # 'data/eagleedu.class.category.csv',
-            'data/eagleedu.class_section.csv',
+            'data/eagleedu.class.section.csv',
             'data/eagleedu.subject.csv',
             'data/eagleedu.group_division.csv',
             'data/eagleedu.roomnumber.csv',
             'data/eagleedu.roomname.csv',
-            'data/eagleedu.standard_class.csv',
+            'data/eagleedu.class.csv',
             'data/eagleedu.guardian.relation.csv',
             # 'data/eagleedu.bddistrict.csv',
 
