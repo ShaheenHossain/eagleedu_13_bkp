@@ -121,7 +121,6 @@
         </record>
 
 
-
     <record id="view_eagleedu_exam_list" model="ir.ui.view">
         <field name="name">exam_list.form</field>
         <field name="model">exam.list</field>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eagle>
+    <data>
+
+        <record id="view_eagleedu_exam_valuation_form" model="ir.ui.view">
+            <field name="name">eagleedu.exam.valuation.form</field>
+            <field name="model">eagleedu.exam.valuation</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="valuation_completed" type="object" attrs="{'invisible': ['|', ('mark_sheet_created', '=', False),('state', '!=', 'draft')]}"
+                                class="oe_highlight" string="Completed"/>
+                        <button name="valuation_canceled" type="object" attrs="{'invisible': True}" string="Cancel"/>
+                        <button name="set_to_draft" type="object" attrs="{'invisible': [('state', '!=', 'completed')]}" string="Set to Draft"/>
+                        <field name="state" readonly="1" widget="statusbar" statusbar_visible="draft,completed"/>
+                    </header>
+                    <sheet>
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+
+                            <group col="4">
+                                <field name="exam_id"
+                                       attrs="{'readonly': ['|', ('mark_sheet_created', '=', True), ('state', '!=', 'draft')]}" options='{"no_open": True, "no_create": True}'/>
+                                <field name="class_id"
+                                       attrs="{'readonly': ['|', ('mark_sheet_created', '=', True), ('state', '!=', 'draft')]}" options='{"no_open": True, "no_create": True}'/>
+
+                                <field name="division_id"
+                                       attrs="{'readonly': ['|', ('mark_sheet_created', '=', True), ('state', '!=', 'draft')]}" options='{"no_open": True, "no_create": True}'/>
+
+                                <field name="teachers_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="date" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="subject_id" widget="selection"
+                                       attrs="{'invisible': [('division_id', '=', False)],'readonly': ['|', ('mark_sheet_created', '=', True), ('state', '!=', 'draft')]}"/>
+
+                                <field name="academic_year" invisible="1"/>
+                                <field name="mark_sheet_created" invisible="1"/>
+                            </group>
+                            <group col="3">
+                                <label for = "details" string="Details" />
+                                <label for = "mark" string="Mark" />
+                                <label for = "pass_mark" string="Pass Mark" />
+
+                                <field name="tut_mark"  attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="tut_pass_mark" nolabel='1' attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="subj_mark"  attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="subj_pass_mark" nolabel='1' attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="obj_mark"  attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="obj_pass_mark" nolabel='1' attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="prac_mark"  attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="prac_pass_mark" nolabel='1' attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="mark"  attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="pass_mark" nolabel='1' attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+
+                            </group>
+
+                        <div style="padding-bottom: 10px;">
+                            <button style="padding: 1px 5px;"
+                                    attrs="{'invisible': ['|', ('mark_sheet_created', '=', True), ('state', '=', 'cancel')]}"
+                                    string="Create Mark Sheet" name="create_mark_sheet" type="object"
+                                    class="oe_highlight"/>
+                        </div>
+                        <notebook attrs="{'invisible': [('mark_sheet_created', '=', False)]}">
+                            <page string="Mark Sheet">
+                                <field name="valuation_line" attrs="{'readonly': [('state', '!=', 'draft')]}">
+                                    <tree create="0" delete="0" editable="bottom">
+                                        <field name="student_id" invisible="1"/>
+                                        <field name="roll_no" invisible="0" readonly="1"/>
+                                        <field name="student_name" readonly="1"/>
+                                        <field name="tut_mark" attrs="{'column_invisible': [('parent.tut_mark', '=', 0)]}"/>
+                                        <!--<field name="tut_pr" attrs="{'column_invisible': [('parent.tut_mark', '=', 0)]}"/>-->
+                                        <field name="subj_mark" attrs="{'column_invisible': [('parent.subj_mark', '=', 0)]}"/>
+                                        <!--<field name="subj_pr" attrs="{'column_invisible': [('parent.subj_mark', '=', 0)]}"/>-->
+                                        <field name="obj_mark"  attrs="{'column_invisible': [('parent.obj_mark', '=', 0)]}"/>
+                                        <!--<field name="obj_pr"  attrs="{'column_invisible': [('parent.obj_mark', '=', 0)]}"/>-->
+                                        <field name="prac_mark" attrs="{'column_invisible': [('parent.prac_mark', '=', 0)]}"/>
+                                        <!--<field name="prac_pr" attrs="{'column_invisible': [('parent.prac_mark', '=', 0)]}"/>-->
+                                        <field name="mark_scored" />
+                                        <!--<field name="pass_or_fail" widget="boolean_toggle"/>-->
+                                        <field name="valuation_id" invisible="1"/>
+                                        <!--<field name="letter_grade" invisible="1"/>-->
+                                        <!--<field name="grade_point" invisible="1"/>-->
+                                    </tree>
+                                    <form>
+                                        <sheet>
+                                            <group>
+                                                <field name="student_id"/>
+                                                <field name="mark_scored"/>
+                                                <field name="pass_or_fail" widget="boolean_toggle"/>
+                                                <field name="valuation_id" invisible="1"/>
+                                                <!--<field name="letter_grade"/>-->
+                                                <!--<field name="grade_point" />-->
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_eagleedu_exam_valuation_tree" model="ir.ui.view">
+            <field name="name">exam_valuation_tree.tree</field>
+            <field name="model">eagleedu.exam.valuation</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="exam_id"/>
+                    <field name="subject_id"/>
+                    <field name="class_id"/>
+                    <field name="division_id"/>
+                    <field name="teachers_id"/>
+                    <field name="state"/>
+                    <field name="academic_year" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_eagleedu_exam_valuation_search" model="ir.ui.view">
+                <field name="name">exam_valuation_search</field>
+                <field name="model">eagleedu.exam.valuation</field>
+                <field name="arch" type="xml">
+                   <search string="Exam Valuation">
+                        <group expand="1" string="Group By">
+                            <filter string="Batch" name="group_batch" context="{'group_by':'academic_year'}"/>
+                            <filter string="Class" name="group_level" context="{'group_by':'class_id'}"/>
+                            <filter string="Exam" name="group_exam" context="{'group_by':'exam_id'}"/>
+                            <filter string="Section" name="group_section" context="{'group_by':'division_id'}"/>
+                        </group>
+                    </search>
+                </field>
+            </record>
+
+        <record id="action_eagleedu_exam_valuation" model="ir.actions.act_window">
+            <field name="name">Exam Valuation</field>
+            <field name="res_model">eagleedu.exam.valuation</field>
+            <field name="view_mode">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_group_batch': 1,
+                'search_default_group_level': 1,
+                'search_default_group_exam': 1,
+                'search_default_group_section': 1}</field>
+            <field name="target">current</field>
+        </record>
+
+        <menuitem id="eagleedu_exam_valuation_menu" parent="eagleedu_exam.exam_main_menu"
+                  action="action_eagleedu_exam_valuation" name="Exam Valuation" sequence="18"/>
+
+    </data>
+</eagle>

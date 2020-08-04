@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_eagleedu_exam,access.eagleedu.exam,model_eagleedu_exam,,1,1,1,1
 access_eagleedu_exam_type,access.eagleedu.exam.type,model_eagleedu_exam_type,,1,1,1,1
+access_eagleedu_subject_line,access.eagleedu.subject.line,model_eagleedu_subject_line,,1,1,1,1
+access_eagleedu_exam_valuation,access.eagleedu.exam.valuation,model_eagleedu_exam_valuation,,1,1,1,1
