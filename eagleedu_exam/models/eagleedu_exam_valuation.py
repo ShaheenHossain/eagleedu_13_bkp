@@ -50,13 +50,12 @@ class EagleeduExamValuation(models.Model):
                 for res in result_created:
                     domain.append(res.subject_id.id)
         return {'domain': {'subject_id': [('id', '!=', domain)]}}
+
     @api.onchange('tut_mark','tut_pass_mark','subj_mark','subj_pass_mark','obj_mark','obj_pass_mark','prac_mark','prac_pass_mark')
     def calculate_marks(self):
         for rec in self:
             rec.mark=rec.tut_mark+rec.subj_mark+rec.obj_mark+rec.prac_mark
             rec.pass_mark=rec.tut_pass_mark+rec.subj_pass_mark+rec.obj_pass_mark+rec.prac_pass_mark
-
-
 
 
 
@@ -102,10 +101,8 @@ class EagleeduExamValuation(models.Model):
             domain.append(items.subject_id.id)
         return {'domain': {'subject_id': [('id', 'in', domain)]}}
 
-    # @api.multi
+    # @api.model
     def create_mark_sheet(self):
-
-
         valuation_line_obj = self.env['exam.valuation.line']
         history = self.env['eagleedu.class.history'].search([('class_id','=',self.division_id.id),
                                                               '|',('compulsory_subjects','=',self.subject_id.id),'|',('selective_subjects','=',self.subject_id.id),
