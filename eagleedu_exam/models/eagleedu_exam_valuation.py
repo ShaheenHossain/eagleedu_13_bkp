@@ -254,7 +254,7 @@ class StudentsExamValuationLine(models.Model):
     def onchange_mark_scored(self):
 
         per_obtained = (self.mark_scored * 100) / self.valuation_id.mark
-        grades = self.env['eagleedu.result.grading'].search([['id', '>', '0']])
+        grades = self.env['eagleedu.exam.grading'].search([['id', '>', '0']])
         for gr in grades:
             if gr.min_per <= per_obtained and gr.max_per >= per_obtained:
                 self.letter_grade = gr.result
